@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IN Slide Show{% endblock %}
+
+{% block body %}
+
+{% block content %}
+
+ <div class="wrapper">
+    <div id="carousel" class="carousel slide carousel-fade carousel" data-bs-ride="carousel" data-bs-interval="8000">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop class="d-block w-100" alt="Slider_start">
+                    <source src="{{ asset('video/Eversys_intro_4k.mp4') }}" type="video/mp4">
+                </video>
+            </div>
+
+            {% for image in images %}
+
+                {% if image.inSlide == true %} 
+
+                    <div id="carousel" class="carousel-item bg-dark">
+                        <div class="zoom-in-out-box">
+                            <img src="{{ asset('img/' ~ image.nom) }}" class="d-block w-100" alt="Slider_run"> {# class="d-block w-100" #}
+                        </div>
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% endblock %}

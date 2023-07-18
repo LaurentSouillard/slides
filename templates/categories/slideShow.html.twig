@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Slide Show{% endblock %}
+
+{% block body %}
+
+{% block content %}
+
+ <div class="wrapper">
+    <div id="carousel" class="carousel slide carousel-fade carousel" data-bs-ride="carousel" data-bs-interval="8000">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop class="d-block w-100" alt="Slider_start">
+                    <source src="{{ asset('video/minions.gif') }}" type="video/gif">
+                </video>
+            </div>
+
+    
+            {% for image in images %}
+
+                {% if categorie.id == image.categorie.id %} 
+
+                    <div id="carousel" class="carousel-item bg-dark">
+                        <div class="zoom-in-out-box" >
+                            <img src="{{ asset('img/' ~ image.nom) }}" class="d-block w-100" alt="Slider_run">
+                        </div>
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% endblock %}
